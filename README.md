@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # cloud-music
 
 ## Project setup
@@ -22,3 +23,7 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# CloudMusic
+this is a vue project
+>>>>>>> 71aa6956d109da3b03e616d38a042a2e30d9298f
