@@ -19,7 +19,30 @@
 
       <div class="r-content">
         <!-- 用户信息栏 -->
-        <div class="user_info"></div>
+        <div class="user">
+          <div class="userinfo">
+            <div class="user_img" @click="goLogin()">
+              <el-avatar :size="34" :src="circleUrl">
+                <i
+                  style="font-size: 20px; vertical-align: middle"
+                  class="el-icon-user"
+                ></i>
+              </el-avatar>
+            </div>
+            <div class="user_name" @click="goLogin()">
+              未登录
+              <i class="el-icon-caret-bottom"></i>
+            </div>
+            <div class="user_vip"></div>
+          </div>
+          <div class="setting">
+            <div><i class="iconfont icon-pifu"></i></div>
+            <div>
+              <i class="iconfont icon-shezhi" style="font-size: 18px"></i>
+            </div>
+            <div><i class="iconfont icon-youxiang"></i></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -29,14 +52,19 @@
 import SearchInput from "../search/SearchInput.vue";
 export default {
   components: { SearchInput },
-  name: "",
   data() {
     return {
       input2: "",
       flag: false,
+      circleUrl: "",
+      count: 0, // 倒计时，计时器
     };
   },
-  methods: {},
+  methods: {
+    goLogin() {
+      this.$router.push("/login");
+    },
+  },
   mounted() {},
 };
 </script>
@@ -91,6 +119,55 @@ export default {
       i {
         color: #fff;
         font-size: 14px;
+      }
+    }
+  }
+
+  // 用户栏
+  .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .userinfo {
+      display: flex;
+      align-items: center;
+      .user_img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        svg {
+          font-size: 18px;
+        }
+      }
+      .user_name {
+        font-size: 12px;
+        color: #ccc;
+        margin-left: 5px;
+        cursor: pointer;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+
+    .setting {
+      margin-left: 10px;
+      display: flex;
+      color: #ccc;
+      > div {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 5px;
+        > .iconfont {
+          cursor: pointer;
+          font-size: 22px;
+
+          &:hover {
+            color: #fff;
+          }
+        }
       }
     }
   }

@@ -1,21 +1,23 @@
 <template>
   <div class="home">
     <el-container class="container">
-      <el-header>
+      <el-header style="height: 10%">
         <Header />
       </el-header>
-      <el-container>
+      <el-container style="height: 90%">
         <el-aside width="200px">
           <Menu />
         </el-aside>
         <el-container>
-          <el-main>Main</el-main>
+          <el-scrollbar style="height: 100%">
+            <el-main>
+              <router-view></router-view>
+            </el-main>
+          </el-scrollbar>
         </el-container>
       </el-container>
-      <el-footer>
-        <Footer />
-      </el-footer>
     </el-container>
+    <Footer />
   </div>
 </template>
 
@@ -24,7 +26,6 @@ import Header from "@/components/layout/Header.vue";
 import Menu from "@/components/layout/Menu.vue";
 import Footer from "@/components/layout/Footer.vue";
 export default {
-  name: "home",
   components: { Header, Menu, Footer },
   data() {
     return {};
@@ -37,42 +38,30 @@ export default {
 <style lang="scss" scoped>
 .container {
   width: 80%;
-  height: 100vh;
+  height: 85vh;
   margin: 0 auto;
-}
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
 
-.el-header,
-.el-footer {
-  background-color: #b3c0d1;
-  color: #333;
-  text-align: center;
-  line-height: 60px;
-}
+  .el-header {
+    background: linear-gradient(135deg, #d31027, #ea384d);
+  }
+  .el-footer {
+    color: #333;
+    background-color: #d3dce6;
+  }
 
-.el-aside {
-  background-color: #d3dce6;
-  color: #333;
-  text-align: center;
-  line-height: 200px;
-}
+  .el-aside {
+    background-color: #fff;
+    color: #333;
+  }
 
-.el-main {
-  background-color: #e9eef3;
-  color: #333;
-  text-align: center;
-  line-height: 160px;
+  .el-main {
+    background-color: #e9eef3;
+    color: #333;
+  }
 }
-
-body > .el-container {
-  margin-bottom: 40px;
-}
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
+/* element滚动条组件 隐藏水平滚动条 */
+.container ::v-deep .el-scrollbar__wrap {
+  overflow-x: hidden;
 }
 </style>
