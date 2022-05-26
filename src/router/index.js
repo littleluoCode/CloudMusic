@@ -5,9 +5,28 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/home',
+        path: '/',
         name: 'home',
-        component: () => import('@/views/Home')
+        component: () => import('@/views/Home'),
+        children: [
+            {
+                path: 'found',
+                name: 'Found',
+                component: () => import('@/views/found/Found'),
+                children: [
+                    {
+                        path: 'recommend',
+                        name: 'Recommend',
+                        component: () => import('@/views/found/Recommend'),
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import('@/views/Login')
     }
 ]
 
@@ -16,3 +35,4 @@ const router = new VueRouter({
 })
 
 export default router
+
