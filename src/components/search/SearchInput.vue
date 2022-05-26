@@ -340,6 +340,7 @@ export default {
   width: 300px;
   height: 560px;
   user-select: none;
+  z-index: 999;
 }
 
 // 搜索建议
